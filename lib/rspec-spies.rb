@@ -1,4 +1,4 @@
-require 'rspec/mocks/method_double'
+require 'rspec'
 RSpec::Mocks::MethodDouble.class_eval do
   # override defining stubs to record the message was called.
   # there's only one line difference from upstream rspec, but can't change it without fully overriding
@@ -15,7 +15,6 @@ RSpec::Mocks::MethodDouble.class_eval do
   end
 end
 
-require 'rspec/matchers'
 RSpec::Matchers.module_eval do
   def have_received(sym, &block)
     RSpec::Matchers::Matcher.new :have_received, sym, @args, block do |sym, args, block|
